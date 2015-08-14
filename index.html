@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Tells the browser what the title of this page should be. -->
+  <title>Les Ansley</title>
+
+  <!--This stylesheet makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing-->
+  <link rel="stylesheet" href="http://normalize-css.googlecode.com/svn/trunk/normalize.css">
+  <!--This stylesheet imports the font LATO-->
+  <link href='http://fonts.googleapis.com/css?family=Raleway:700,400,200' rel='stylesheet' type='text/css'>
+
+  <!-- Load the page styles. -->
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+  <link rel="shortcut icon" href="images/favicon-32x32.ico">
+  <!--Load script files-->
+  <script src="js/jQuery.js"></script>
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+  <script src="js/helper.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+  <div id="main">
+
+    <div id="header" class="center-content clearfix">
+      <ul id="topContacts" class="flex-box mobile-invisible"></ul>
+    </div>
+    <div id="introduction" class="center-content"></div>
+    <div style="clear: both;"></div>
+
+    <div class="sectionDivider mobile-visible""><hr></div>
+
+    <div id="skills" class="mobile-visible">
+      <div class="row">
+        <h2 id="skills-header" class="section-header" onMouseOver="return changeImage('skillsButton', skillsStatus)" onMouseOut= "return changeImageBack('skillsButton', skillsStatus)" onMouseDown="return handleMDown('skillsButton', 'skills', 'skills-section-container')">Skills</h2>
+        <img id="skillsButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider"><hr></div>
+
+    <div id="workExperience">
+      <div class="row">
+        <h2 id="work-header" class="section-header" onMouseOver="return changeImage('workButton', workStatus)" onMouseOut= "return changeImageBack('workButton', workStatus)" onMouseDown="return handleMDown('workButton', 'work', 'work-container')">Work</h2>
+        <img id="workButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider"><hr></div>
+
+    <div id="projects">
+      <div class="row">
+        <h2 id="project-header" class="section-header" onMouseOver="return changeImage('projectButton', projectStatus)" onMouseOut= "return changeImageBack('projectButton', projectStatus)" onMouseDown="return handleMDown('projectButton', 'project', 'project-container')">Projects</h2>
+        <img id="projectButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div  class="sectionDivider"><hr></div>
+
+    <div id="education">
+      <div class="row">
+        <h2 id="education-header" class="section-header" onMouseOver="return changeImage('educationButton', educationStatus)" onMouseOut= "return changeImageBack('educationButton', educationStatus)" onMouseDown="return handleMDown('educationButton', 'education', 'school-container')">Education</h2>
+        <img id="educationButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider"><hr></div>
+
+    <div id="publication">
+      <div class="row">
+        <h2 id="publication-header" class="section-header" onMouseOver="return changeImage('publicationButton', publicationStatus)" onMouseOut= "return changeImageBack('publicationButton', publicationStatus)" onMouseDown="return handleMDown('publicationButton', 'publication', 'publication-container')">Publications</h2>
+        <img id="publicationButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider mobile-visible"><hr></div>
+
+    <div id="contact" class="mobile-visible">
+      <div class="row">
+        <h2 id="contact-header" class="section-header" onMouseOver="return changeImage('contactButton', contactStatus)" onMouseOut= "return changeImageBack('contactButton', contactStatus)" onMouseDown="return handleMDown('contactButton', 'contact', 'contact-container')">Contact Details</h2>
+        <img id="contactButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div  class="sectionDivider"><hr></div>
+
+    <div id="mapDiv">
+      <div class="row">
+        <h2 id="map-header" class="section-header" onMouseOver="return changeImage('mapButton', mapStatus)" onMouseOut= "return changeImageBack('mapButton', mapStatus)" onMouseDown="return handleMDown('mapButton', 'map', 'map')">Places</h2>
+        <img id="mapButton" class="img-arrow" src="images/arrow-right.png" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider"><hr></div>
+
+
+
+    <footer id="letsConnect" class="dark-gray">
+      <h2 class="footer-text orange center-text">Let's Connect</h2>
+      <div class="cssValidation">
+        <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/resumeBuilder.js"></script>
+  <script type="text/javascript">
+
+    //Call this when the form loads
+    onFormLoad();
+
+  </script>
+</body>
+</html>
