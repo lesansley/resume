@@ -265,6 +265,9 @@ a {
 .skill-item {
   padding-left: 7px;
   padding-right: 7px;
+  line-height: 165%;
+  letter-spacing: 1px;
+
 }
 
 .skill-section-item {

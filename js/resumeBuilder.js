@@ -297,13 +297,9 @@ function frameWorkDivision(arrayLength, indexReached, columnsPerRow) {
 //preload images of the arrow icon for faster transition
 var openArrow = new Image();
 var closeArrow = new Image();
-var openArrowHover = new Image();
-var closeArrowHover = new Image();
 
 openArrow.src = 'images/arrow-down.jpg';
 closeArrow.src = 'images/arrow-right.jpg';
-openArrowHover.src = 'images/arrow-down-hover.jpg';
-closeArrowHover.src = 'images/arrow-right-hover.jpg';
 
 //set initial status for section dropdown: Closed = FALSE
 var workStatus, educationStatus, projectStatus, mapStatus, publicationStatus, skillsStatus, contactStatus= false;
