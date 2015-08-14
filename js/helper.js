@@ -69,7 +69,7 @@ var HTMLformattedPublication = '%authors%.&nbsp\'%title%\'&nbsp<i>%journal%</i>,
 
 var HTMLcontactContainer = '<section id="contact-container"></section>'
 var HTMLcontactStart = '<div class="contact-entry row"></div>'
-var HTMLcontactChannel = '<div class="contact-channel col-2 orange-text">%data%:</div>'
+var HTMLcontactChannel = '<div class="contact-channel col-1 orange-text">%data%:</div>'
 var HTMLcontactInfo = '<div class="contact-info col-9"><a class="contact-link" target="_blank" href="%link%">%data%</a></div>'
 
 var internationalizeButton = '<button>Internationalize</button>';

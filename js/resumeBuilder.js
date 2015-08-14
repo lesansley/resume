@@ -22,7 +22,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Research in between attending (a lot of) meetings'
+			description: 'Lead research projects in between attending (a lot of) meetings'
 		},
 		{
 			employer: 'Kingston University',

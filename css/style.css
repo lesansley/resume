@@ -65,15 +65,6 @@ h2 {
   line-height: 29px;
 }
 
-.contact-link {
-  display: inline;
-}
-
-.contact-entry {
-  line-height: 26px;
-  letter-spacing: 0.7px;
-}
-
 h4,
 .contact-link,
 .reference {
@@ -113,6 +104,23 @@ h2, h3, h4, h5 {
   font-weight: 700;
   text-transform: uppercase;
   padding: 0;
+}
+
+.contact-link {
+  display: inline;
+}
+
+.contact-text,
+.contact-entry {
+  line-height: 165%;
+}
+
+.contact-channel {
+  min-width: 70px;
+}
+
+.contact-entry {
+  letter-spacing: 0.7px;
 }
 
 .headerRole {
@@ -345,7 +353,6 @@ ul {
 .biopic {
   float: left;
   width: 125px;
-  display: none;
   border-radius: 100px;
   margin-right: 10px;
 }
@@ -416,13 +423,7 @@ figure {
   }
 }
 
-/*display bio image*/
-@media only screen and (min-width: 810px) {
-  .biopic {
-    display: block;
-    max-width: 150px;
-  }
-}
+
 
 @media only screen and (max-width: 510px) {
   col-headerName {
@@ -446,14 +447,13 @@ figure {
 
 
 @media only screen and (max-width: 809px) {
-
   #main {
     margin: 0;
   }
 
   .welcome-message {
     display: flex;
-    text-align: center;
+    text-align: justify;
     padding-bottom: 0;
     padding-left: 20px;
     padding-right: 20px;
