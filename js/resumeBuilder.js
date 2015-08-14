@@ -1,7 +1,7 @@
 var bio = {
 	firstname: 'Les',
 	lastname: 'Ansley',
-	role : 'Research Scientist',
+	role : 'Associate Professor',
 	contacts: {
 		email: ['les@ansleyfamily.com','mailto:les@ansleyfamily.com'],
 		mobile: ['+44 7999 418 119','tel:+447999418119'],
@@ -22,21 +22,21 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'blah-blah'
+			description: 'Research in between attending (a lot of) meetings'
 		},
 		{
 			employer: 'Kingston University',
 			role: 'Senior Lecturer',
 			dates: 'Sep 2003 to Aug 2007',
 			location: 'London, UK',
-			description: 'blah-blah'
+			description: 'Lecturing and module development'
 		},
 		{
 			employer: 'Institut Montana',
 			role: 'Teacher',
 			dates: 'Sep 1998 to Aug 1999',
 			location: 'Zug, Switzerland',
-			description: 'blah-blah'
+			description: 'Teaching science and physical education to 12 and 13 year-olds'
 		}
 	]
 };
