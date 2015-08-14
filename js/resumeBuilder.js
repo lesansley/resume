@@ -11,8 +11,8 @@ var bio = {
 		github: ['lesansley','https://github.com/lesansley']
 	},
 	'bioPic': 'images/profile.jpg',
-	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that align with my enthusiam for technology and design.',
-	'skills': ['leadership','problem solving','analytical thinking','data analysis','public speaking','research','project management','technology','javascript','teaching','html','css']
+	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiam for technology, data and design.',
+	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','project management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
 };
 
 var work = {
