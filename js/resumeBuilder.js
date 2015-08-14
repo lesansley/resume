@@ -300,10 +300,10 @@ var closeArrow = new Image();
 var openArrowHover = new Image();
 var closeArrowHover = new Image();
 
-openArrow.src = 'images/arrow-down.png';
-closeArrow.src = 'images/arrow-right.png';
-openArrowHover.src = 'images/arrow-down-hover.png';
-closeArrowHover.src = 'images/arrow-right-hover.png';
+openArrow.src = 'images/arrow-down.jpg';
+closeArrow.src = 'images/arrow-right.jpg';
+openArrowHover.src = 'images/arrow-down-hover.jpg';
+closeArrowHover.src = 'images/arrow-right-hover.jpg';
 
 //set initial status for section dropdown: Closed = FALSE
 var workStatus, educationStatus, projectStatus, mapStatus, publicationStatus, skillsStatus, contactStatus= false;
