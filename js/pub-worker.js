@@ -1,7 +1,8 @@
 importScripts('helper.js');
+var publications;
 
-this.onmessage = function(e) {
-    var publications, idStringList, summaryURL;
+onmessage = function(e) {
+    var idStringList, summaryURL;
 
     var pubmedSearchAPI = e.data.pubmedSearchAPI;
     var pubmedSummaryAPI = e.data.pubmedSummaryAPI;
@@ -11,9 +12,11 @@ this.onmessage = function(e) {
     var searchterm = '&term=' + e.data.searchterm;
     var returntype = '&rettype=' + e.data.returntype;
 
-    var idURL = pubmedSearchAPI + database + searchterm + returnmode + returnmax
+    //Generate URL to pass in AJAX query
+    var idURL = pubmedSearchAPI + database + returnmode + returnmax + searchterm
 
-    var getPubmed = function(url) {//passed url
+    //AJAX query with Promise
+    var getPubmed = function(url) {
         return new Promise(function(resolve, reject) {
             var xhr = new XMLHttpRequest();
             xhr.open('get', url, true);
@@ -30,28 +33,27 @@ this.onmessage = function(e) {
         });
     };
 
-    getPubmed(idURL).then(function(data) {
+    getPubmed(idURL).then(function(data) {//calls the AJAX function and provides resolve function
         var idList = data.esearchresult.idlist;
-        idStringList = idList.toString(); //converts the idlist to a string to be appended to teh search url
+        idStringList = idList.toString(); //converts the idlist to a string to be appended to the search url
+        idStringList = '&id=' + idStringList;
+        //Generate URL to pass in AJAX query with returned ids
+        summaryURL = pubmedSummaryAPI + database + returnmode + returntype + idStringList;
+        getPubmed(summaryURL).then(function(summary) {
+            publications = formatReferences(summary);
+            postMessage(publications);
+            //console.log(publications);
+        }, function(status) {
+            publications = 'Something went wrong getting the ids.';
+        });
     }, function(status) {
         publications = 'Something went wrong getting the ids.';
     });
 
-    idStringList = '&id=' + idStringList;
-    summaryURL = pubmedSummaryAPI + database + searchterm + returnmode + returntype + idStringList;
-
-    getPubmed(summaryURL).then(function(summary) {
-        publications = formatReferences(summary);
-    }, function(status) {
-        publications = 'Something went wrong getting the ids.';
-    });
-
-    postMessage(publications);
-};
-
-function formatReferences(summary) {
-    var publicationList;
-    for(refs in summary.result) {
+    function formatReferences(summary) {
+        var publicationList = '';
+        var i=1;
+        for(refs in summary.result) {
             if(refs !== 'uids') {
                 var authors = '';
                 var publication = '';
@@ -61,7 +63,6 @@ function formatReferences(summary) {
                     authors += summary.result[refs].authors[i].name + ', ';
                     i++;
                 }
-
                 publication = HTMLpublication.replace('%data%','http://www.ncbi.nlm.nih.gov/pubmed/'+refs)
                 authors += summary.result[refs].lastauthor;
                 publication = publication.replace('%authors%',authors);
@@ -70,20 +71,26 @@ function formatReferences(summary) {
                 //Alter formatting if article is In Press
                 if(summary.result[refs].volume!=='') {
                     publication = publication.replace('%volume%',' ' + summary.result[refs].volume);
-                    publication = publication.replace('%issue%','(' + summary.result[refs].issue + '): ');
-                    publication = publication.replace('%pages%',summary.result[refs].pages +', ');
+                    if (summary.result[refs].issue!=='') {
+                        publication = publication.replace('%issue%','(' + summary.result[refs].issue + ')');
+                    }
+                    else {
+                        publication = publication.replace('%issue%','');
+                    }
+                    publication = publication.replace('%pages%',': ' + summary.result[refs].pages +', ');
                     var date = summary.result[refs].pubdate.slice(0,4);
                     publication = publication.replace('%date%',date + '.');
                 }
                 else {
-                    publication = publication.replace('%volume%','');
+                    publication = publication.replace('%volume%',' In Press');
                     publication = publication.replace('%issue%','');
-                    publication = publication.replace('%pages%','');
+                    publication = publication.replace('%pages%','.');
                     publication = publication.replace('%date%','');
-                    publication = publication + ' In Press.'
                 }
-                publicationList = publication + publicationList + '<p>';
+                publicationList = publication + publicationList;
             }
         }
-    return(publicationList);
+        return(publicationList);
+    }
 }
+

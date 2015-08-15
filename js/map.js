@@ -1,22 +1,9 @@
-clickLocations = [];
-
-function logClicks(x,y) {
-  clickLocations.push(
-    {
-      x: x,
-      y: y
-    }
-  );
-  console.log('x location: ' + x + '; y location: ' + y);
-}
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map;// declares a global map variable
-
 
 /*
 Start here! initializeMap() is called when page is loaded.
@@ -29,8 +16,10 @@ function initializeMap() {
     disableDefaultUI: true
   };
 
-  // This next line makes `map` a new Google Map JavaScript Object and attaches it to
-  // <div id="map">, which is appended as part of an exercise late in the course.
+  /*
+  This next line makes `map` a new Google Map JavaScript Object and attaches it to
+  <div id="map">
+   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
 

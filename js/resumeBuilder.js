@@ -280,6 +280,7 @@ document.getElementById('work-container').style.display = 'none';
 document.getElementById('project-container').style.display = 'none';
 document.getElementById('school-container').style.display = 'none';
 document.getElementById('contact-container').style.display = 'none';
+document.getElementById('publication-container').style.display = 'none';
 document.getElementById('map').style.display = 'none';
 
 //This function calculates how many portfolio images need to go on each line
@@ -416,6 +417,7 @@ function passToStatus(section, status) {
 //function to get pubmed array of publication ids using a web-worker
 function getPublications() {
 
+	//create a new Worker object referencing the pub-worker js file
 	var pubWorker = new Worker('js/pub-worker.js');
 
 	var pubmedSearchAPI = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?";
@@ -427,18 +429,16 @@ function getPublications() {
     var returntype = "abstract";
 
     $('#publication').append(HTMLpublicationContainer);
-    document.getElementById('publication-container').style.display = 'none';
-
     //start the web-worker
     pubWorker.postMessage({'pubmedSearchAPI':pubmedSearchAPI, 'pubmedSummaryAPI':pubmedSummaryAPI,
-    	'database':database, 'returnmode':returnmode, 'searchterm':searchterm, 'returntype':returntype});
+    	'database':database, 'returnmode':returnmode, 'returnmax': returnmax, 'searchterm':searchterm, 'returntype':returntype});
 
     //listen for response from web-worker
     pubWorker.onmessage = function(e) {
-      var publications = e.data;
+      var publication = e.data;
+      $('#publication-container').append(HTMLpublicationStart);
       $('.publication-entry').append(publication);
-      document.getElementById('publication-container').style.display = 'block';
-    }
+  	}
 }
 //run these scripts when the form loads
 function onFormLoad() {

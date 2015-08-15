@@ -46,13 +46,13 @@ var HTMLpublicationStart = '<div class="publication-entry row"></div>';
 var HTMLpublicationAuthor = '%data%, ';
 var HTMLpublicationLastAuthor = '%data%.';
 var HTMLpublicationTitle = ' \'%data%\' ';
-var HTMLpublicationJournal = '%data%, ';
-var HTMLpublicationVolume = '%data%';
-var HTMLpublicationIssue = '(%data%):';
+var HTMLpublicationJournal = '<i>%data%</i>, ';
+var HTMLpublicationVolume = '<b>%data%';
+var HTMLpublicationIssue = '(%data%)</b>:';
 var HTMLpublicationPages = ' %data%, ';
 var HTMLpublicationDate = '%data%.';
 
-var HTMLpublication = '<a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' %journal%,%volume%%issue%%pages%%date%</div>'
+var HTMLpublication = '<div class="citation"><a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' <i>%journal%</i>,<b>%volume%%issue%</b>%pages%%date%</div>'
 var HTMLformattedPublication = '%authors%.&nbsp\'%title%\'&nbsp<i>%journal%</i>,&nbsp<b>%volume%</b>(%issue%):&nbsp%pages%,&nbsp%date%.'
 
 var HTMLcontactContainer = '<section id="contact-container"></section>'
