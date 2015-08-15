@@ -1,3 +1,5 @@
+//instantiate a web-worker
+
 var bio = {
 	firstname: 'Les',
 	lastname: 'Ansley',
@@ -278,6 +280,7 @@ document.getElementById('work-container').style.display = 'none';
 document.getElementById('project-container').style.display = 'none';
 document.getElementById('school-container').style.display = 'none';
 document.getElementById('contact-container').style.display = 'none';
+document.getElementById('publication-container').style.display = 'none';
 document.getElementById('map').style.display = 'none';
 
 //This function calculates how many portfolio images need to go on each line
@@ -411,91 +414,32 @@ function passToStatus(section, status) {
 	};
 }
 
-//function to get pubmed array of publication ids
+//function to get pubmed array of publication ids using a web-worker
 function getPublications() {
+
+	//create a new Worker object referencing the pub-worker js file
+	var pubWorker = new Worker('js/pub-worker.js');
+
 	var pubmedSearchAPI = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?";
-	var pubmedSummaryAPI ="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
-	var database = "pubmed";
-	var returnmode = "json";
-	var returnmax = "100";
-	var searchterm = "ansley+l[author]";
-	var returntype = "abstract";
+    var pubmedSummaryAPI ="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
+    var database = "pubmed";
+    var returnmode = "json";
+    var returnmax = "100";
+    var searchterm = "ansley+l[author]";
+    var returntype = "abstract";
 
-	getPubmedId(pubmedSearchAPI,database,returnmode,returnmax,searchterm,pubmedSummaryAPI,returntype);
-};
+    $('#publication').append(HTMLpublicationContainer);
+    //start the web-worker
+    pubWorker.postMessage({'pubmedSearchAPI':pubmedSearchAPI, 'pubmedSummaryAPI':pubmedSummaryAPI,
+    	'database':database, 'returnmode':returnmode, 'returnmax': returnmax, 'searchterm':searchterm, 'returntype':returntype});
 
-function getPubmedId(searchAPI,database,returnmode,returnmax,searchterm,abstractAPI,returntype) {
-
-	var ids = [];
-
-	$.get(searchAPI,{
-		db: database,
-		retmode: returnmode,
-		retmax: returnmax,
-		term: searchterm
-	})
-	.done(function(data) { //when the get is complete then do the next steps
-		var ids = data.esearchresult.idlist;
-    	var publications = [];
-    	getPubmedReferences(ids,database,returnmode,abstractAPI,returntype);
-    });
-};
-
-function getPubmedReferences(idList,database,returnMode,abstractAPI,returnType) {
-   	var str = idList[0].toString();
-    var idStringList = idList.toString();
-    var jqxhr = $.get(abstractAPI,{
-    	db: database,
-    	retmode: returnMode,
-    	retype: returnType,
-    	id: idStringList
-    })
-	.done(function(summary) {
-    	$('#publication').append(HTMLpublicationContainer);
-
-    	for(refs in summary.result) {
-
-			if(refs !== 'uids') {
-				var authors = '';
-				var publication = '';
-				//reverse order by prepending
-				$('#publication-container').prepend(HTMLpublicationStart);
-
-				var authorCount = ((summary.result[refs].authors).length);
-
-				var i=0;
-				while (i<authorCount-1) {
-					authors += summary.result[refs].authors[i].name + ', ';
-					i++;
-				}
-
-				publication = HTMLpublication.replace('%data%','http://www.ncbi.nlm.nih.gov/pubmed/'+refs)
-				authors += summary.result[refs].lastauthor;
-				publication = publication.replace('%authors%',authors);
-				publication = publication.replace('%title%',summary.result[refs].title);
-				publication = publication.replace('%journal%',summary.result[refs].source);
-				//Alter formatting if articel is In Press
-				if(summary.result[refs].volume!=='') {
-					publication = publication.replace('%volume%',' ' + summary.result[refs].volume);
-					publication = publication.replace('%issue%','(' + summary.result[refs].issue + '): ');
-					publication = publication.replace('%pages%',summary.result[refs].pages +', ');
-					var date = summary.result[refs].pubdate.slice(0,4);
-					publication = publication.replace('%date%',date + '.');
-				}
-				else {
-					publication = publication.replace('%volume%','');
-					publication = publication.replace('%issue%','');
-					publication = publication.replace('%pages%','');
-					publication = publication.replace('%date%','');
-					publication = publication + ' In Press.'
-				}
-				$('.publication-entry:first').append(publication);
-			}
-		}
-		document.getElementById('publication-container').style.display = 'none';
-    });
+    //listen for response from web-worker
+    pubWorker.onmessage = function(e) {
+      var publication = e.data;
+      $('#publication-container').append(HTMLpublicationStart);
+      $('.publication-entry').append(publication);
+  	}
 }
-
 //run these scripts when the form loads
 function onFormLoad() {
 }

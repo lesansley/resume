@@ -350,6 +350,10 @@ ul {
   list-style-type: none;
 }
 
+.citation {
+  padding-bottom: 10px;
+}
+
 .biopic {
   float: left;
   width: 125px;
