@@ -1,5 +1,3 @@
-//instantiate a web-worker
-
 var bio = {
 	firstname: 'Les',
 	lastname: 'Ansley',
@@ -12,7 +10,13 @@ var bio = {
 		google: ['+lesansley', 'https://plus.google.com/+LesAnsley'],
 		github: ['lesansley','https://github.com/lesansley']
 	},
-	'bioPic': 'images/profile.jpg',
+	bioPic: [
+		'images/profile-scaled.jpg',
+		'images/selfie.jpg',
+		'images/cycling.jpg',
+		'images/jumping.jpg',
+		'images/painting.jpg'
+	],
 	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiam for technology, data and design.',
 	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','project management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
 };
@@ -109,7 +113,7 @@ bio.display = function() {
 	var formattedheaderName = HTMLheaderName.replace('%first%',bio.firstname);
 	formattedheaderName = formattedheaderName.replace('%last%',bio.lastname);
 	var formattedNameRole = formattedheaderName + formattedheaderRole;
-	var formattedbioPic = HTMLbioPic.replace('%data%', bio.bioPic);
+	var formattedbioPic = HTMLbioPic.replace('%data%', bio.bioPic[0]);
 	var formattedwelcomeMsg = HTMLwelcomeMsg.replace('%data%', bio.welcomeMsg);
 
 	$('#header').prepend(formattedNameRole);
@@ -263,7 +267,6 @@ education.display = function() {
 	}
 };
 
-
 $('#mapDiv').append(googleMap);
 
 //Function calls
@@ -280,7 +283,6 @@ document.getElementById('work-container').style.display = 'none';
 document.getElementById('project-container').style.display = 'none';
 document.getElementById('school-container').style.display = 'none';
 document.getElementById('contact-container').style.display = 'none';
-document.getElementById('publication-container').style.display = 'none';
 document.getElementById('map').style.display = 'none';
 
 //This function calculates how many portfolio images need to go on each line
@@ -355,12 +357,6 @@ function handleMDown(buttonName, booleanName, elementName) {
  	return true;
 }
 
-function triggerResize() {
-	initializeMap();
-	google.maps.event.trigger(map, 'resize')
-}
-
-
 //passes the current display status of the section (i.e. none=false; block=true) to the local variable
 function passFromStatus(section) {
 	switch(section) {
@@ -414,32 +410,111 @@ function passToStatus(section, status) {
 	};
 }
 
-//function to get pubmed array of publication ids using a web-worker
-function getPublications() {
-
-	//create a new Worker object referencing the pub-worker js file
-	var pubWorker = new Worker('js/pub-worker.js');
-
-	var pubmedSearchAPI = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?";
-    var pubmedSummaryAPI ="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
-    var database = "pubmed";
-    var returnmode = "json";
-    var returnmax = "100";
-    var searchterm = "ansley+l[author]";
-    var returntype = "abstract";
-
-    $('#publication').append(HTMLpublicationContainer);
-    //start the web-worker
-    pubWorker.postMessage({'pubmedSearchAPI':pubmedSearchAPI, 'pubmedSummaryAPI':pubmedSummaryAPI,
-    	'database':database, 'returnmode':returnmode, 'returnmax': returnmax, 'searchterm':searchterm, 'returntype':returntype});
-
-    //listen for response from web-worker
-    pubWorker.onmessage = function(e) {
-      var publication = e.data;
-      $('#publication-container').append(HTMLpublicationStart);
-      $('.publication-entry').append(publication);
-  	}
+function changeBioPic() {
+	var max = bio.bioPic.length;
+	var index = getRandomInt(1,max);
+	document.getElementById('biopic').src = bio.bioPic[index];
 }
+
+function changeBioPicBack() {
+	document.getElementById('biopic').src = bio.bioPic[0];
+}
+
+function triggerResize() {
+	initializeMap();
+	google.maps.event.trigger(map, 'resize')
+}
+
+//function to get pubmed array of publication ids
+function getPublications() {
+	var pubmedSearchAPI = "http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?";
+	var pubmedSummaryAPI ="http://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?";
+	var database = "pubmed";
+	var returnmode = "json";
+	var returnmax = "100";
+	var searchterm = "ansley+l[author]";
+	var returntype = "abstract";
+
+	getPubmedId(pubmedSearchAPI,database,returnmode,returnmax,searchterm,pubmedSummaryAPI,returntype);
+};
+
+function getPubmedId(searchAPI,database,returnmode,returnmax,searchterm,abstractAPI,returntype) {
+
+	var ids = [];
+
+	$.get(searchAPI,{
+		db: database,
+		retmode: returnmode,
+		retmax: returnmax,
+		term: searchterm
+	})
+	.done(function(data) { //when the get is complete then do the next steps
+		var ids = data.esearchresult.idlist;
+    	var publications = [];
+    	getPubmedReferences(ids,database,returnmode,abstractAPI,returntype);
+    });
+};
+
+function getPubmedReferences(idList,database,returnMode,abstractAPI,returnType) {
+   	var str = idList[0].toString();
+    var idStringList = idList.toString();
+    var jqxhr = $.get(abstractAPI,{
+    	db: database,
+    	retmode: returnMode,
+    	retype: returnType,
+    	id: idStringList
+    })
+	.done(function(summary) {
+    	$('#publication').append(HTMLpublicationContainer);
+
+    	for(refs in summary.result) {
+
+			if(refs !== 'uids') {
+				var authors = '';
+				var publication = '';
+				//reverse order by prepending
+				$('#publication-container').prepend(HTMLpublicationStart);
+
+				var authorCount = ((summary.result[refs].authors).length);
+
+				var i=0;
+				while (i<authorCount-1) {
+					authors += summary.result[refs].authors[i].name + ', ';
+					i++;
+				}
+
+				publication = HTMLpublication.replace('%data%','http://www.ncbi.nlm.nih.gov/pubmed/'+refs)
+				authors += summary.result[refs].lastauthor;
+				publication = publication.replace('%authors%',authors);
+				publication = publication.replace('%title%',summary.result[refs].title);
+				publication = publication.replace('%journal%',summary.result[refs].source);
+				//Alter formatting if articel is In Press
+				if(summary.result[refs].volume!=='') {
+					publication = publication.replace('%volume%',' ' + summary.result[refs].volume);
+					publication = publication.replace('%issue%','(' + summary.result[refs].issue + '): ');
+					publication = publication.replace('%pages%',summary.result[refs].pages +', ');
+					var date = summary.result[refs].pubdate.slice(0,4);
+					publication = publication.replace('%date%',date + '.');
+				}
+				else {
+					publication = publication.replace('%volume%','');
+					publication = publication.replace('%issue%','');
+					publication = publication.replace('%pages%','');
+					publication = publication.replace('%date%','');
+					publication = publication + ' In Press.'
+				}
+				$('.publication-entry:first').append(publication);
+			}
+		}
+		document.getElementById('publication-container').style.display = 'none';
+    });
+}
+
+//generates a random integer based on the range provided
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 //run these scripts when the form loads
 function onFormLoad() {
 }
