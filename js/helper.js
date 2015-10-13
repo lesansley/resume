@@ -3,7 +3,7 @@ var HTMLheaderRole = '<div class="col-headerRole role-div"><span class="headerRo
 
 var HTMLcontactGeneric = '<li class="flex-item contact-item"><span class="orange-text">%contact%</span><span class="contact-text"><a class="contact-link" target="_blank" href="%link%">%data%</a></span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic mobile-invisible">';
+var HTMLbioPic = '<img id="biopic" src="%data%" class="biopic mobile-invisible" onMouseOver="return changeBioPic()" onMouseOut="return changeBioPicBack()">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skills-title" class="mobile-invisible">Skills at a Glance:</h3><ul id="skills-list" class="flex-box"></ul>';
