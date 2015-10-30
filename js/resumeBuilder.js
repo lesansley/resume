@@ -11,8 +11,7 @@ var bio = {
 		github: ['lesansley','https://github.com/lesansley']
 	},
 	bioPic: [
-		'images/profile-scaled.jpg',
-		'images/selfie.jpg',
+		'images/profile.jpg',
 		'images/cycling.jpg',
 		'images/jumping.jpg',
 		'images/painting.jpg'
@@ -50,23 +49,29 @@ var work = {
 var project = {
 	'programs': [
 		{
-			title: 'Violet Project',
-			dates: 'Current',
-			description: 'blah',
-			image: 'images/holder.gif'
+			title: 'Arcade Game',
+			dates: '2015',
+			description: 'An HTML5 Canvas powered video game, developed using the best practices in Object Oriented JavaScript.',
+			image: 'images/arcade_game_300x300.jpg'
 		},
 		{
-			title: 'BaJIR',
-			dates: 'Current',
-			description: 'blah',
-			image: 'images/nhs.jpg'
+			title: 'Portfolio',
+			dates: '2015',
+			description: 'A portfolio page developed using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.',
+			image: 'images/portfolio_300x300.jpg'
 		},
 		{
-			title: 'Newcastle Falcons',
-			dates: 'November 2013',
-			description : 'blah',
-			image: 'images/falcons.png'
-		}
+			title: 'Neighbourhood Map',
+			dates: '2015',
+			description : 'An interactive, responsive map of a local neighborhood. The project was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
+			image: 'images/neighbourhood_map_300x300.jpg'
+		},
+		{
+			title: 'Resume',
+			dates: '2015',
+			description : 'An interactive resume application, developed using jQuery, that reads all data from a JSON file and then dynamically modifies the DOM to display the information.',
+			image: 'images/resume_300x300.jpg'
+		}	
 	]
 };
 
@@ -195,7 +200,7 @@ work.display = function() {
 //function to display  projects
 projects.display = function() {
 	//This variable sets the number of columns in the portfolio section
-	var columns = 3;
+	var columns = 2;
 	var index = 0;
 
 	$('#projects').append(HTMLprojectContainer);
@@ -212,15 +217,13 @@ projects.display = function() {
 			$('.project-entry:last').append(formattedframeworkDiv);
 
 			var formattedTitle = HTMLprojectTitle.replace('%data%',project.programs[index].title);
-			var formattedDates = HTMLprojectDates.replace('%data%',project.programs[index].dates);
 			var formattedDescription = HTMLprojectDescription.replace('%data%',project.programs[index].description);
 			var formattedImage = HTMLprojectImage.replace('%data%',project.programs[index].image);
 
 			$('.framework-entry:last').append(formattedTitle);
-			$('.framework-entry:last').append(formattedDates);
-			$('.framework-entry:last').append(formattedDescription);
 			$('.framework-entry:last').append(formattedImage);
-
+			$('.framework-entry:last').append(formattedDescription);
+			
 			index++;
 		}
 	}

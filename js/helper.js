@@ -23,10 +23,9 @@ var HTMLworkDescription = '<div class="work-description col-12">%data%</div>';
 
 var HTMLprojectContainer ='<section id="project-container"></section>'
 var HTMLprojectStart = '<div class="project-entry row"></div>';
-var HTMLprojectTitle = '<a class="projectTitle" href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<div>%data%</div>';
-var HTMLprojectImage = '<figure><img class="imgResponsive" src="%data%"></figure>';
+var HTMLprojectTitle = '<div class="projectTitle"><h3 class="orange-text">%data%</h3></div>';
+var HTMLprojectImage = '<figure><a class="project-wrapper" href="#"><img class="imgResponsive" src="%data%"></a>';
+var HTMLprojectDescription = '<span class="project-description">%data%</span></figure>';
 
 var HTMLschoolContainer ='<section id="school-container"></section>'
 var HTMLschoolStart = '<div class="education-entry row"></div>';
@@ -46,13 +45,13 @@ var HTMLpublicationStart = '<div class="publication-entry row"></div>';
 var HTMLpublicationAuthor = '%data%, ';
 var HTMLpublicationLastAuthor = '%data%.';
 var HTMLpublicationTitle = ' \'%data%\' ';
-var HTMLpublicationJournal = '<i>%data%</i>, ';
-var HTMLpublicationVolume = '<b>%data%';
-var HTMLpublicationIssue = '(%data%)</b>:';
+var HTMLpublicationJournal = '%data%, ';
+var HTMLpublicationVolume = '%data%';
+var HTMLpublicationIssue = '(%data%):';
 var HTMLpublicationPages = ' %data%, ';
 var HTMLpublicationDate = '%data%.';
 
-var HTMLpublication = '<div class="citation"><a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' <i>%journal%</i>,<b>%volume%%issue%</b>%pages%%date%</div>'
+var HTMLpublication = '<a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' %journal%,%volume%%issue%%pages%%date%</div>'
 var HTMLformattedPublication = '%authors%.&nbsp\'%title%\'&nbsp<i>%journal%</i>,&nbsp<b>%volume%</b>(%issue%):&nbsp%pages%,&nbsp%date%.'
 
 var HTMLcontactContainer = '<section id="contact-container"></section>'
