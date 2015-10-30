@@ -21,11 +21,11 @@ var HTMLworkDates = '<div class="date-text col-8">%data%</div>';
 var HTMLworkLocation = '<div class="location-text col-4">%data%</div>';
 var HTMLworkDescription = '<div class="work-description col-12">%data%</div>';
 
-var HTMLprojectContainer ='<section id="project-container"></section>'
-var HTMLprojectStart = '<div class="project-entry row"></div>';
-var HTMLprojectTitle = '<div class="projectTitle"><h3 class="orange-text">%data%</h3></div>';
-var HTMLprojectImage = '<figure><a class="project-wrapper" href="#"><img class="imgResponsive" src="%data%"></a>';
-var HTMLprojectDescription = '<span class="project-description">%data%</span></figure>';
+var HTMLportfolioContainer ='<section id="portfolio-container"></section>'
+var HTMLportfolioStart = '<div class="portfolio-entry row"></div>';
+var HTMLportfolioTitle = '<div class="portfolioTitle"><h3 class="orange-text">%data%</h3></div>';
+var HTMLportfolioImage = '<figure class="portfolio-wrapper"><a href="#"><img id="projectImage-%index%" class="imgResponsive portfolio-image" src="%data%"></a>';
+var HTMLportfolioDescription = '<span id="projectDescription-%index%" class="portfolio-description portfolio-%index%">%data%</span></figure>';
 
 var HTMLschoolContainer ='<section id="school-container"></section>'
 var HTMLschoolStart = '<div class="education-entry row"></div>';

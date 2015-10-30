@@ -17,7 +17,7 @@ var bio = {
 		'images/painting.jpg'
 	],
 	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiam for technology, data and design.',
-	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','project management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
+	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','portfolio management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
 };
 
 var work = {
@@ -27,7 +27,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Lead research projects in between attending (a lot of) meetings'
+			description: 'Lead research portfolios in between attending (a lot of) meetings'
 		},
 		{
 			employer: 'Kingston University',
@@ -46,8 +46,8 @@ var work = {
 	]
 };
 
-var project = {
-	'programs': [
+var portfolio = {
+	'projects': [
 		{
 			title: 'Arcade Game',
 			dates: '2015',
@@ -63,7 +63,7 @@ var project = {
 		{
 			title: 'Neighbourhood Map',
 			dates: '2015',
-			description : 'An interactive, responsive map of a local neighborhood. The project was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
+			description : 'An interactive, responsive map of a local neighborhood. The application	 was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
 			image: 'images/neighbourhood_map_300x300.jpg'
 		},
 		{
@@ -197,37 +197,73 @@ work.display = function() {
 	}
 };
 
-//function to display  projects
-projects.display = function() {
-	//This variable sets the number of columns in the portfolio section
-	var columns = 2;
-	var index = 0;
+//function to display  portfolios
+portfolios.display = function() {
+	
+	$('#portfolios').append(HTMLportfolioContainer);
 
-	$('#projects').append(HTMLprojectContainer);
-
-	while (index < project.programs.length) {
-
-		$('#project-container').append(HTMLprojectStart);
-
-		var iterations = frameWorkDivision(project.programs.length, index, columns);
-
-		for(var i=0; i<iterations; i++) {
-
-			var formattedframeworkDiv = HTMLframeworkDiv.replace('%num%', 12/columns);
-			$('.project-entry:last').append(formattedframeworkDiv);
-
-			var formattedTitle = HTMLprojectTitle.replace('%data%',project.programs[index].title);
-			var formattedDescription = HTMLprojectDescription.replace('%data%',project.programs[index].description);
-			var formattedImage = HTMLprojectImage.replace('%data%',project.programs[index].image);
-
-			$('.framework-entry:last').append(formattedTitle);
-			$('.framework-entry:last').append(formattedImage);
-			$('.framework-entry:last').append(formattedDescription);
-			
-			index++;
+	//Set an event listener for mousoever
+	$('#portfolios').mouseover(function(e) {
+		if(e.target && (e.target.nodeName == 'IMG' || e.target.nodeName == 'SPAN')) {
+			if(e.target.id !== 'portfolioButton') {
+				var id = e.target.id
+				var start = id.search('-') + 1;
+				var end = id.length;
+				var index = id.slice(start, end);
+				showDescription(index);
+			}
 		}
+	});
+
+	$('#portfolios').mouseout(function(e) {
+		if(e.target && (e.target.nodeName == 'IMG' || e.target.nodeName == 'SPAN')) {
+			if(e.target.id !== 'portfolioButton') {
+				var id = e.target.id
+				var start = id.search('-') + 1;
+				var end = id.length;
+				var index = id.slice(start, end);
+				hideDescription(index);
+			}
+		}
+	});
+	
+	for (var project in portfolio.projects) {
+		
+		if (project%2 === 0) {
+			$('#portfolio-container').append(HTMLportfolioStart);
+		}
+
+		var formattedframeworkDiv = HTMLframeworkDiv.replace('%num%', 6);
+		$('.portfolio-entry:last').append(formattedframeworkDiv);
+
+		var formattedTitle = HTMLportfolioTitle.replace('%data%',portfolio.projects[project].title);
+		var formattedImage = HTMLportfolioImage.replace('%data%',portfolio.projects[project].image);
+		var formattedDescription = HTMLportfolioDescription.replace('%data%',portfolio.projects[project].description);
+		
+		var formattedImageDescription = formattedImage + formattedDescription;
+
+		formattedImageDescription = formattedImageDescription.replace(/%index%/g, project);
+
+		$('.framework-entry:last').append(formattedTitle);
+		$('.framework-entry:last').append(formattedImageDescription);
 	}
 };
+
+function showDescription(index) {
+	var elemImg = 'projectImage-' + index;
+	var elemSpan = 'projectDescription-' + index;
+	
+	$('#' + elemSpan)[0].style.visibility = 'visible';
+	$('#' + elemImg)[0].style.opacity = '0.1';
+}
+
+function hideDescription(index) {
+	var elemImg = 'projectImage-' + index;
+	var elemSpan = 'projectDescription-' + index;
+	
+	$('#' + elemSpan)[0].style.visibility = 'hidden';
+	$('#' + elemImg)[0].style.opacity = '1';
+}
 
 //function to display education
 education.display = function() {
@@ -275,7 +311,7 @@ $('#mapDiv').append(googleMap);
 //Function calls
 bio.display();
 work.display();
-projects.display();
+portfolios.display();
 education.display();
 skills.display();
 contact.display();
@@ -283,7 +319,7 @@ contact.display();
 //set the display of the sections to none
 document.getElementById('skills-section-container').style.display = 'none';
 document.getElementById('work-container').style.display = 'none';
-document.getElementById('project-container').style.display = 'none';
+document.getElementById('portfolio-container').style.display = 'none';
 document.getElementById('school-container').style.display = 'none';
 document.getElementById('contact-container').style.display = 'none';
 document.getElementById('map').style.display = 'none';
@@ -310,7 +346,7 @@ openArrow.src = 'images/arrow-down.jpg';
 closeArrow.src = 'images/arrow-right.jpg';
 
 //set initial status for section dropdown: Closed = FALSE
-var workStatus, educationStatus, projectStatus, mapStatus, publicationStatus, skillsStatus, contactStatus= false;
+var workStatus, educationStatus, portfolioStatus, mapStatus, publicationStatus, skillsStatus, contactStatus= false;
 
 //change the arrow icon when hover starts
 function changeImage(buttonName, booleanName) {
@@ -367,8 +403,8 @@ function passFromStatus(section) {
 	        return workStatus;
     	case 'education':
 	        return educationStatus;
-	    case 'project':
-	    	return projectStatus;
+	    case 'portfolio':
+	    	return portfolioStatus;
 	    case 'map':
 	    	return mapStatus;
 	    case 'publication':
@@ -398,8 +434,8 @@ function passToStatus(section, status) {
     	case 'education':
 	        educationStatus = status;
 	        break;
-	    case 'project':
-	    	projectStatus = status;
+	    case 'portfolio':
+	    	portfolioStatus = status;
 	    	break;
 	    case 'map':
 	    	mapStatus = status;
