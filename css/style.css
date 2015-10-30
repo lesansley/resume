@@ -402,6 +402,10 @@ ul {
   margin: 0px;
 }
 
+.portfolio-image {
+  display: block;
+}
+
 .portfolio-description,
 .portfolio-image {
   margin: 0px;
@@ -414,8 +418,8 @@ ul {
   font-size: 140%;
   color: #4a4a4a;
   width: 90%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
   line-height: 150%;
   visibility: hidden; 
 }

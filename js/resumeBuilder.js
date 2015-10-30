@@ -27,21 +27,24 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Lead research portfolios in between attending (a lot of) meetings'
+			description: 'Lead research portfolios in between attending (a lot of) meetings',
+			url:'http://www.northumbria.ac.uk'
 		},
 		{
 			employer: 'Kingston University',
 			role: 'Senior Lecturer',
 			dates: 'Sep 2003 to Aug 2007',
 			location: 'London, UK',
-			description: 'Lecturing and module development'
+			description: 'Lecturing and module development',
+			url:'http://www.kingston.ac.uk'
 		},
 		{
 			employer: 'Institut Montana',
 			role: 'Teacher',
 			dates: 'Sep 1998 to Aug 1999',
 			location: 'Zug, Switzerland',
-			description: 'Teaching science and physical education to 12 and 13 year-olds'
+			description: 'Teaching science and physical education to 12 and 13 year-olds',
+			url:'http://www.montana-zug.ch'
 		}
 	]
 };
@@ -52,25 +55,31 @@ var portfolio = {
 			title: 'Arcade Game',
 			dates: '2015',
 			description: 'An HTML5 Canvas powered video game, developed using the best practices in Object Oriented JavaScript.',
-			image: 'images/arcade_game_300x300.jpg'
+			image: 'images/arcade_game_300x300.jpg',
+			github: 'https://github.com/lesansley/arcade-game.git'
 		},
 		{
 			title: 'Portfolio',
 			dates: '2015',
 			description: 'A portfolio page developed using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.',
-			image: 'images/portfolio_300x300.jpg'
+			image: 'images/portfolio_300x300.jpg',
+			github: 'https://github.com/lesansley/portfolio.git'
+		
 		},
 		{
 			title: 'Neighbourhood Map',
 			dates: '2015',
 			description : 'An interactive, responsive map of a local neighborhood. The application	 was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
-			image: 'images/neighbourhood_map_300x300.jpg'
+			image: 'images/neighbourhood_map_300x300.jpg',
+			github: 'https://github.com/lesansley/maps.git'
+		
 		},
 		{
 			title: 'Resume',
 			dates: '2015',
 			description : 'An interactive resume application, developed using jQuery, that reads all data from a JSON file and then dynamically modifies the DOM to display the information.',
-			image: 'images/resume_300x300.jpg'
+			image: 'images/resume_300x300.jpg',
+			github: 'https://github.com/lesansley/resume.git'
 		}	
 	]
 };
@@ -82,21 +91,24 @@ var education = {
 			degree: 'Post-Graduate Teaching Certificate',
 			major: 'Higher Education',
 			location: 'London, UK',
-			dates: 'Sep 2004 to Jun 2005'
+			dates: 'Sep 2004 to Jun 2005',
+			url:'http://www.kingston.ac.uk'
 		},
 		{
 			name: 'University of Cape Town',
 			degree: 'PhD',
 			major: 'Physiology',
 			location: 'Cape Town, South Africa',
-			dates: 'Jan 2000 to Mar 2003'
+			dates: 'Jan 2000 to Mar 2003',
+			url:'http://www.uct.ac.za'
 		},
 		{
 			name: 'University of Birmingham',
 			degree: 'BSc (Hons)',
 			major: 'Sport & Exercise Science',
 			location: 'Birmingham, UK',
-			dates: 'Sep 1996 to Jun 1998'
+			dates: 'Sep 1996 to Jun 1998',
+			url:'http://www.bham.ac.uk'
 		}
 	],
 	'onlineCourses': [
@@ -183,6 +195,7 @@ work.display = function() {
 		$('#work-container').append(HTMLworkStart);
 
 		var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
+		formattedEmployer = formattedEmployer.replace('%url%', work.jobs[job].url);
 		var formattedRole = HTMLworkRole.replace('%data%', work.jobs[job].role);
 		var formattedDates = HTMLworkDates.replace('%data%',work.jobs[job].dates);
 		var formattedLocation = HTMLworkLocation.replace('%data%',work.jobs[job].location);
@@ -227,7 +240,9 @@ portfolios.display = function() {
 		}
 	});
 	
-	for (var project in portfolio.projects) {
+	var projects = portfolio.projects;
+
+	for (var project in projects) {
 		
 		if (project%2 === 0) {
 			$('#portfolio-container').append(HTMLportfolioStart);
@@ -236,9 +251,12 @@ portfolios.display = function() {
 		var formattedframeworkDiv = HTMLframeworkDiv.replace('%num%', 6);
 		$('.portfolio-entry:last').append(formattedframeworkDiv);
 
-		var formattedTitle = HTMLportfolioTitle.replace('%data%',portfolio.projects[project].title);
-		var formattedImage = HTMLportfolioImage.replace('%data%',portfolio.projects[project].image);
-		var formattedDescription = HTMLportfolioDescription.replace('%data%',portfolio.projects[project].description);
+		var formattedTitle = HTMLportfolioTitle.replace('%data%',projects[project].title);
+		formattedTitle = formattedTitle.replace('%url%', projects[project].github);
+		console.log(formattedTitle);
+
+		var formattedImage = HTMLportfolioImage.replace('%data%',projects[project].image);
+		var formattedDescription = HTMLportfolioDescription.replace('%data%',projects[project].description);
 		
 		var formattedImageDescription = formattedImage + formattedDescription;
 
@@ -276,6 +294,7 @@ education.display = function() {
 		$('#school-container').append(HTMLschoolStart);
 
 		var formattedName = HTMLschoolName.replace('%data%',education.schools[school].name);
+		formattedName = formattedName.replace('%url%',education.schools[school].url);
 		var formattedDegree = HTMLschoolDegree.replace('%data%',education.schools[school].degree);
 		var formattedDates = HTMLschoolDates.replace('%data%',education.schools[school].dates);
 		var formattedLocation = HTMLschoolLocation.replace('%data%',education.schools[school].location);

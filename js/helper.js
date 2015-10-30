@@ -15,7 +15,7 @@ var HTMLskillsSectionContent = '<li class="flex-item skill-section-item"><span c
 
 var HTMLworkContainer ='<section id="work-container"></section>'
 var HTMLworkStart = '<div class="work-entry row"></div>';
-var HTMLworkEmployer = '<div class="col-2 workPlace"><a class="workPlace"href="#">%data%</a></div>';
+var HTMLworkEmployer = '<div class="col-2 workPlace"><a class="workPlace"href="%url%" target="_blank">%data%</a></div>';
 var HTMLworkRole = '<div class="work-role col-10">%data%</div>';
 var HTMLworkDates = '<div class="date-text col-8">%data%</div>';
 var HTMLworkLocation = '<div class="location-text col-4">%data%</div>';
@@ -23,13 +23,13 @@ var HTMLworkDescription = '<div class="work-description col-12">%data%</div>';
 
 var HTMLportfolioContainer ='<section id="portfolio-container"></section>'
 var HTMLportfolioStart = '<div class="portfolio-entry row"></div>';
-var HTMLportfolioTitle = '<div class="portfolioTitle"><h3 class="orange-text">%data%</h3></div>';
-var HTMLportfolioImage = '<figure class="portfolio-wrapper"><a href="#"><img id="projectImage-%index%" class="imgResponsive portfolio-image" src="%data%"></a>';
+var HTMLportfolioTitle = '<div class="portfolioTitle"><a href="%url%" target="_blank"><h3 class="orange-text">%data%</h3></a></div>';
+var HTMLportfolioImage = '<figure class="portfolio-wrapper"><img id="projectImage-%index%" class="imgResponsive portfolio-image" src="%data%">';
 var HTMLportfolioDescription = '<span id="projectDescription-%index%" class="portfolio-description portfolio-%index%">%data%</span></figure>';
 
 var HTMLschoolContainer ='<section id="school-container"></section>'
 var HTMLschoolStart = '<div class="education-entry row"></div>';
-var HTMLschoolName = '<div class="col-3 schoolPlace"><a class="schoolPlace" href="#">%data%</a></div>';
+var HTMLschoolName = '<div class="col-3 schoolPlace"><a class="schoolPlace" href="%url%" target="_blank">%data%</a></div>';
 var HTMLschoolDegree = '<div class="col-10">%data%</div>';
 var HTMLschoolDates = '<div class="date-text col-8">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text col-4">%data%</div>';
