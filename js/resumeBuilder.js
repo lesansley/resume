@@ -3,12 +3,12 @@ var bio = {
 	lastname: 'Ansley',
 	role : 'Associate Professor',
 	contacts: {
-		email: ['les@ansleyfamily.com','mailto:les@ansleyfamily.com'],
-		mobile: ['+44 7999 418 119','tel:+447999418119'],
-		twitter: ['@dr_les', 'https://twitter.com/dr_les'],
-		linkedin: ['lesansley','https://uk.linkedin.com/in/lesansley'],
-		google: ['+lesansley', 'https://plus.google.com/+LesAnsley'],
-		github: ['lesansley','https://github.com/lesansley']
+		email: ['les@ansleyfamily.com','mailto:les@ansleyfamily.com','images/email_30x30.png'],
+		mobile: ['+44 7999 418 119','tel:+447999418119','images/phone_30x30.png'],
+		twitter: ['@dr_les', 'https://twitter.com/dr_les','images/twitter_30x30.png'],
+		linkedin: ['lesansley','https://uk.linkedin.com/in/lesansley','images/linkedin_30x30.png'],
+		google: ['+lesansley', 'https://plus.google.com/+LesAnsley','images/google_30x30.png'],
+		github: ['lesansley','https://github.com/lesansley','images/github_30x30.png']
 	},
 	bioPic: [
 		'images/profile.jpg',
@@ -156,6 +156,20 @@ bio.display = function() {
 			$('#skills-list').append(formattedSkill);
 		}
 	}
+	
+	//Add contact icons in footer
+	$('#footer').prepend(HTMLfootContactContainer);
+	console.log('here');
+	$('#foot-contact-container').append(HTMLfootContactStart);
+		
+		for(var contact in bio.contacts) {
+			
+			var formattedfootContactContent = HTMLfootContactContent.replace('%data%', bio.contacts[contact][2]);
+			formattedfootContactContent = formattedfootContactContent.replace('%url%', bio.contacts[contact][1]);
+
+			$('#foot-contact-list').append(formattedfootContactContent);
+		}
+
 };
 
 skills.display = function() {
@@ -167,21 +181,6 @@ skills.display = function() {
 			var formattedSectionSkill = HTMLskillsSectionContent.replace('%data%', bio.skills[skill]);
 			$('#skills-section-list').append(formattedSectionSkill);
 		}
-}
-
-contact.display = function() {
-	$('#contact').append(HTMLcontactContainer);
-
-	for(var contact in bio.contacts) {
-		$('#contact-container').append(HTMLcontactStart);
-		var formattedContactChannel = HTMLcontactChannel.replace('%data%', contact);
-		var formattedContactInfo = HTMLcontactInfo.replace('%data%',bio.contacts[contact][0]);
-		formattedContactInfo = formattedContactInfo.replace('%link%', bio.contacts[contact][1]);
-
-		$('.contact-entry:last').append(formattedContactChannel);
-		$('.contact-entry:last').append(formattedContactInfo);
-	}
-
 }
 
 //function to display work experience
@@ -253,8 +252,7 @@ portfolios.display = function() {
 
 		var formattedTitle = HTMLportfolioTitle.replace('%data%',projects[project].title);
 		formattedTitle = formattedTitle.replace('%url%', projects[project].github);
-		console.log(formattedTitle);
-
+		
 		var formattedImage = HTMLportfolioImage.replace('%data%',projects[project].image);
 		var formattedDescription = HTMLportfolioDescription.replace('%data%',projects[project].description);
 		
@@ -333,14 +331,12 @@ work.display();
 portfolios.display();
 education.display();
 skills.display();
-contact.display();
 
 //set the display of the sections to none
 document.getElementById('skills-section-container').style.display = 'none';
 document.getElementById('work-container').style.display = 'none';
 document.getElementById('portfolio-container').style.display = 'none';
 document.getElementById('school-container').style.display = 'none';
-document.getElementById('contact-container').style.display = 'none';
 document.getElementById('map').style.display = 'none';
 
 //This function calculates how many portfolio images need to go on each line

@@ -55,7 +55,6 @@ h1 {
   color: #f5a623;
   line-height: 48px;
   display: inline;
-  letter-spacing: 3px;
 }
 
 h2 {
@@ -98,6 +97,7 @@ h2, h3, h4, h5 {
 #firstname {
   font-weight: 200;
   padding: 0;
+  letter-spacing: -2px;
 }
 
 #lastname {
@@ -432,6 +432,15 @@ ul {
   width: 100%px;
 }
 
+#footer {
+  height: 80px;
+}
+
+#foot-contact-list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /*set maximum width for page display and automate margi soze to fit screen*/
 
 @media only screen and (max-width: 1300px) {
@@ -503,10 +512,6 @@ ul {
 
   .mobile-invisible {
     display: none;
-  }
-
-  .mobile-visible {
-    display: block;
   }
 
   .row,

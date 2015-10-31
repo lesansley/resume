@@ -59,6 +59,10 @@ var HTMLcontactStart = '<div class="contact-entry row"></div>'
 var HTMLcontactChannel = '<div class="contact-channel col-1 orange-text">%data%:</div>'
 var HTMLcontactInfo = '<div class="contact-info col-9"><a class="contact-link" target="_blank" href="%link%">%data%</a></div>'
 
+var HTMLfootContactContainer = '<section id="foot-contact-container"></section>'
+var HTMLfootContactStart = '<ul id="foot-contact-list" class="flex-box orange center-text footer-text"></ul>'
+var HTMLfootContactContent = '<li class="foot-contact-item"><a href="%url%"><img src="%data%"></a></li>'
+
 var HTMLmapContainer ='<div id="map-container"></div>'
 var googleMap = '<section id="map"></section>';
 
