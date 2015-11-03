@@ -27,7 +27,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Lead research portfolios in between attending (a lot of) meetings',
+			description: 'Develop the department research strategy, lead research projects, mentor early career researchers and attend (a lot of) meetings',
 			url:'http://www.northumbria.ac.uk'
 		},
 		{
