@@ -16,7 +16,7 @@ var bio = {
 		'images/jumping.jpg',
 		'images/painting.jpg'
 	],
-	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiam for technology, data and design.',
+	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiasm for technology, data and design.',
 	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','portfolio management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
 };
 
@@ -64,7 +64,7 @@ var portfolio = {
 			description: 'A portfolio page developed using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.',
 			image: 'images/portfolio_300x300.jpg',
 			github: 'https://github.com/lesansley/portfolio.git'
-		
+
 		},
 		{
 			title: 'Neighbourhood Map',
@@ -72,7 +72,7 @@ var portfolio = {
 			description : 'An interactive, responsive map of a local neighborhood. The application	 was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
 			image: 'images/neighbourhood_map_300x300.jpg',
 			github: 'https://github.com/lesansley/maps.git'
-		
+
 		},
 		{
 			title: 'Resume',
@@ -80,7 +80,7 @@ var portfolio = {
 			description : 'An interactive resume application, developed using jQuery, that reads all data from a JSON file and then dynamically modifies the DOM to display the information.',
 			image: 'images/resume_300x300.jpg',
 			github: 'https://github.com/lesansley/resume.git'
-		}	
+		}
 	]
 };
 
@@ -156,14 +156,14 @@ bio.display = function() {
 			$('#skills-list').append(formattedSkill);
 		}
 	}
-	
+
 	//Add contact icons in footer
 	$('#footer').prepend(HTMLfootContactContainer);
 	console.log('here');
 	$('#foot-contact-container').append(HTMLfootContactStart);
-		
+
 		for(var contact in bio.contacts) {
-			
+
 			var formattedfootContactContent = HTMLfootContactContent.replace('%data%', bio.contacts[contact][2]);
 			formattedfootContactContent = formattedfootContactContent.replace('%url%', bio.contacts[contact][1]);
 
@@ -211,7 +211,7 @@ work.display = function() {
 
 //function to display  portfolios
 portfolios.display = function() {
-	
+
 	$('#portfolios').append(HTMLportfolioContainer);
 
 	//Set an event listener for mousoever
@@ -238,11 +238,11 @@ portfolios.display = function() {
 			}
 		}
 	});
-	
+
 	var projects = portfolio.projects;
 
 	for (var project in projects) {
-		
+
 		if (project%2 === 0) {
 			$('#portfolio-container').append(HTMLportfolioStart);
 		}
@@ -252,10 +252,10 @@ portfolios.display = function() {
 
 		var formattedTitle = HTMLportfolioTitle.replace('%data%',projects[project].title);
 		formattedTitle = formattedTitle.replace('%url%', projects[project].github);
-		
+
 		var formattedImage = HTMLportfolioImage.replace('%data%',projects[project].image);
 		var formattedDescription = HTMLportfolioDescription.replace('%data%',projects[project].description);
-		
+
 		var formattedImageDescription = formattedImage + formattedDescription;
 
 		formattedImageDescription = formattedImageDescription.replace(/%index%/g, project);
@@ -268,7 +268,7 @@ portfolios.display = function() {
 function showDescription(index) {
 	var elemImg = 'projectImage-' + index;
 	var elemSpan = 'projectDescription-' + index;
-	
+
 	$('#' + elemSpan)[0].style.visibility = 'visible';
 	$('#' + elemImg)[0].style.opacity = '0.1';
 }
@@ -276,7 +276,7 @@ function showDescription(index) {
 function hideDescription(index) {
 	var elemImg = 'projectImage-' + index;
 	var elemSpan = 'projectDescription-' + index;
-	
+
 	$('#' + elemSpan)[0].style.visibility = 'hidden';
 	$('#' + elemImg)[0].style.opacity = '1';
 }
