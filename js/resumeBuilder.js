@@ -71,7 +71,7 @@ var portfolio = {
 			dates: '2015',
 			description : 'An interactive, responsive map of a local neighborhood. The application	 was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
 			image: 'images/neighbourhood_map_300x300.jpg',
-			github: 'https://github.com/lesansley/maps.git'
+			github: 'https://github.com/lesansley/neighbourhood-map.git'
 
 		},
 		{
