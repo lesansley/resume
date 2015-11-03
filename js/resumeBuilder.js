@@ -1,7 +1,7 @@
 var bio = {
 	firstname: 'Les',
 	lastname: 'Ansley',
-	role : 'Associate Professor',
+	role : 'Research Scientist',
 	contacts: {
 		email: ['les@ansleyfamily.com','mailto:les@ansleyfamily.com','images/email_30x30.png'],
 		mobile: ['+44 7999 418 119','tel:+447999418119','images/phone_30x30.png'],
@@ -27,7 +27,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Develop the department research strategy, lead research projects, mentor early career researchers and attend (a lot of) meetings',
+			description: 'Develop the department research strategy, lead research projects, mentor early career researchers, and attend (a lot of) meetings',
 			url:'http://www.northumbria.ac.uk'
 		},
 		{
