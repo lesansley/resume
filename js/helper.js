@@ -3,7 +3,7 @@ var HTMLheaderRole = '<div class="col-headerRole role-div"><span class="headerRo
 
 var HTMLcontactGeneric = '<li class="flex-item contact-item"><span class="orange-text">%contact%</span><span class="contact-text"><a class="contact-link" target="_blank" href="%link%">%data%</a></span></li>';
 
-var HTMLbioPic = '<img src="%data%" class="biopic mobile-invisible">';
+var HTMLbioPic = '<img id="biopic" src="%data%" class="biopic mobile-invisible" onMouseOver="return changeBioPic()" onMouseOut="return changeBioPicBack()">';
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
 var HTMLskillsStart = '<h3 id="skills-title" class="mobile-invisible">Skills at a Glance:</h3><ul id="skills-list" class="flex-box"></ul>';
@@ -15,22 +15,21 @@ var HTMLskillsSectionContent = '<li class="flex-item skill-section-item"><span c
 
 var HTMLworkContainer ='<section id="work-container"></section>'
 var HTMLworkStart = '<div class="work-entry row"></div>';
-var HTMLworkEmployer = '<div class="col-2 workPlace"><a class="workPlace"href="#">%data%</a></div>';
+var HTMLworkEmployer = '<div class="col-2 workPlace"><a class="workPlace"href="%url%" target="_blank">%data%</a></div>';
 var HTMLworkRole = '<div class="work-role col-10">%data%</div>';
 var HTMLworkDates = '<div class="date-text col-8">%data%</div>';
 var HTMLworkLocation = '<div class="location-text col-4">%data%</div>';
 var HTMLworkDescription = '<div class="work-description col-12">%data%</div>';
 
-var HTMLprojectContainer ='<section id="project-container"></section>'
-var HTMLprojectStart = '<div class="project-entry row"></div>';
-var HTMLprojectTitle = '<a class="projectTitle" href="#">%data%</a>';
-var HTMLprojectDates = '<div class="date-text">%data%</div>';
-var HTMLprojectDescription = '<div>%data%</div>';
-var HTMLprojectImage = '<figure><img class="imgResponsive" src="%data%"></figure>';
+var HTMLportfolioContainer ='<section id="portfolio-container"></section>'
+var HTMLportfolioStart = '<div class="portfolio-entry row"></div>';
+var HTMLportfolioTitle = '<div class="portfolioTitle"><a href="%url%" target="_blank"><h3 class="orange-text">%data%</h3></a></div>';
+var HTMLportfolioImage = '<figure class="portfolio-wrapper"><img id="projectImage-%index%" class="imgResponsive portfolio-image" src="%data%">';
+var HTMLportfolioDescription = '<span id="projectDescription-%index%" class="portfolio-description portfolio-%index%">%data%</span></figure>';
 
 var HTMLschoolContainer ='<section id="school-container"></section>'
 var HTMLschoolStart = '<div class="education-entry row"></div>';
-var HTMLschoolName = '<div class="col-3 schoolPlace"><a class="schoolPlace" href="#">%data%</a></div>';
+var HTMLschoolName = '<div class="col-3 schoolPlace"><a class="schoolPlace" href="%url%" target="_blank">%data%</a></div>';
 var HTMLschoolDegree = '<div class="col-10">%data%</div>';
 var HTMLschoolDates = '<div class="date-text col-8">%data%</div>';
 var HTMLschoolLocation = '<div class="location-text col-4">%data%</div>';
@@ -46,19 +45,23 @@ var HTMLpublicationStart = '<div class="publication-entry row"></div>';
 var HTMLpublicationAuthor = '%data%, ';
 var HTMLpublicationLastAuthor = '%data%.';
 var HTMLpublicationTitle = ' \'%data%\' ';
-var HTMLpublicationJournal = '<i>%data%</i>, ';
-var HTMLpublicationVolume = '<b>%data%';
-var HTMLpublicationIssue = '(%data%)</b>:';
+var HTMLpublicationJournal = '%data%, ';
+var HTMLpublicationVolume = '%data%';
+var HTMLpublicationIssue = '(%data%):';
 var HTMLpublicationPages = ' %data%, ';
 var HTMLpublicationDate = '%data%.';
 
-var HTMLpublication = '<div class="citation"><a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' <i>%journal%</i>,<b>%volume%%issue%</b>%pages%%date%</div>'
+var HTMLpublication = '<a class="reference" href="%data%" target="_blank">%authors%. \'%title%\' %journal%,%volume%%issue%%pages%%date%</div>'
 var HTMLformattedPublication = '%authors%.&nbsp\'%title%\'&nbsp<i>%journal%</i>,&nbsp<b>%volume%</b>(%issue%):&nbsp%pages%,&nbsp%date%.'
 
 var HTMLcontactContainer = '<section id="contact-container"></section>'
 var HTMLcontactStart = '<div class="contact-entry row"></div>'
 var HTMLcontactChannel = '<div class="contact-channel col-1 orange-text">%data%:</div>'
 var HTMLcontactInfo = '<div class="contact-info col-9"><a class="contact-link" target="_blank" href="%link%">%data%</a></div>'
+
+var HTMLfootContactContainer = '<section id="foot-contact-container"></section>'
+var HTMLfootContactStart = '<ul id="foot-contact-list" class="flex-box orange center-text footer-text"></ul>'
+var HTMLfootContactContent = '<li class="foot-contact-item"><a href="%url%"><img src="%data%"></a></li>'
 
 var HTMLmapContainer ='<div id="map-container"></div>'
 var googleMap = '<section id="map"></section>';

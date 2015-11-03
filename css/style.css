@@ -55,7 +55,6 @@ h1 {
   color: #f5a623;
   line-height: 48px;
   display: inline;
-  letter-spacing: 3px;
 }
 
 h2 {
@@ -98,6 +97,7 @@ h2, h3, h4, h5 {
 #firstname {
   font-weight: 200;
   padding: 0;
+  letter-spacing: -2px;
 }
 
 #lastname {
@@ -152,7 +152,7 @@ h2, h3, h4, h5 {
   margin-top: auto;
 }
 
-a.projectTitle,
+a.portfolioTitle,
 a.schoolPlace,
 a.onlineCourse,
 a.workPlace {
@@ -168,7 +168,7 @@ a.workPlace {
 }
 
 .work-entry,
-.project-entry,
+.portfolio-entry,
 .education-entry {
   padding-top: 10px;
 }
@@ -207,7 +207,7 @@ a.workPlace {
 .framework-entry {
   padding-left: 20px;
   padding-right: 20px;
-}
+} 
 
 .imgResponsive {
   width: 100%;
@@ -394,9 +394,34 @@ ul {
   }
 }
 
-figure {
+.framework-entry {
+  position: relative;
+}
+
+.portfolio-wrapper {
   margin: 0px;
-  padding-top: 10px;
+}
+
+.portfolio-image {
+  display: block;
+}
+
+.portfolio-description,
+.portfolio-image {
+  margin: 0px;
+  min-width: 270px;
+}
+
+.portfolio-description {
+  position: absolute;
+  top: 25%;
+  font-size: 140%;
+  color: #4a4a4a;
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+  line-height: 150%;
+  visibility: hidden; 
 }
 
 .col-headerName {
@@ -405,6 +430,15 @@ figure {
 
 .col-headerRole {
   width: 100%px;
+}
+
+#footer {
+  height: 80px;
+}
+
+#foot-contact-list {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /*set maximum width for page display and automate margi soze to fit screen*/
@@ -422,7 +456,7 @@ figure {
     max-width: 280px;
   }
 
-  div.project-entry {
+  div.portfolio-entry {
     display: block;
   }
 }
@@ -480,10 +514,6 @@ figure {
     display: none;
   }
 
-  .mobile-visible {
-    display: block;
-  }
-
   .row,
   #header {
     padding-left: 10px;
@@ -502,6 +532,11 @@ figure {
 
   .col-headerRole {
     width: 100%;
+  }
+
+  .portfolio-description {
+    font-size: 100%;
+    line-height: 130%;
   }
 }
 
