@@ -17,7 +17,7 @@ var bio = {
 		'images/painting.jpg'
 	],
 	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiasm for technology, data and design.',
-	'skills': ['leadership','problem solving','analytical thinking','data analysis','research','portfolio management','technology','javascript','vbscript', 'vba','teaching','public speaking','excel','html','css','macros']
+	'skills': ['leadership','problem solving','analytical thinking','data analysis','research', 'teaching', 'public speaking', 'responsive web design', 'javascript', 'jquery',  'bootstrap', 'knockout.js', 'html','css','vbscript','vba','excel','macros']
 };
 
 var work = {
