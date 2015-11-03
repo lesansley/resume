@@ -137,13 +137,7 @@ bio.display = function() {
 
 	//Add contact information
 
-	for(var contact in bio.contacts) {
-		var formattedContact = HTMLcontactGeneric.replace('%contact%', contact + ' ');
-		formattedContact = formattedContact.replace('%data%', bio.contacts[contact][0])
-		formattedContact = formattedContact.replace('%link%', bio.contacts[contact][1])
 
-		$('#topContacts').append(formattedContact);
-	}
 
 	//Add skills
 	$('#introduction').append(formattedbioPic);
