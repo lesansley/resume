@@ -29,7 +29,16 @@
     <div id="introduction" class="center-content"></div>
     <div style="clear: both;"></div>
 
-    <div class="sectionDivider mobile-visible""><hr></div>
+    <div class="sectionDivider"><hr></div>
+
+    <div id="portfolios">
+      <div class="row">
+        <h2 id="portfolio-header" class="section-header" onMouseOver="return changeImage('portfolioButton', portfolioStatus)" onMouseOut= "return changeImageBack('portfolioButton', portfolioStatus)" onMouseDown="return handleMDown('portfolioButton', 'portfolio', 'portfolio-container')">Portfolio  </h2>
+        <img id="portfolioButton" class="img-arrow" src="images/arrow-right.jpg" alt="javascript button">
+      </div>
+    </div>
+
+    <div class="sectionDivider mobile-visible"><hr></div>
 
     <div id="skills" class="mobile-visible">
       <div class="row">
@@ -44,15 +53,6 @@
       <div class="row">
         <h2 id="work-header" class="section-header" onMouseOver="return changeImage('workButton', workStatus)" onMouseOut= "return changeImageBack('workButton', workStatus)" onMouseDown="return handleMDown('workButton', 'work', 'work-container')">Work</h2>
         <img id="workButton" class="img-arrow" src="images/arrow-right.jpg" alt="javascript button">
-      </div>
-    </div>
-
-    <div class="sectionDivider"><hr></div>
-
-    <div id="portfolios">
-      <div class="row">
-        <h2 id="portfolio-header" class="section-header" onMouseOver="return changeImage('portfolioButton', portfolioStatus)" onMouseOut= "return changeImageBack('portfolioButton', portfolioStatus)" onMouseDown="return handleMDown('portfolioButton', 'portfolio', 'portfolio-container')">Portfolio  </h2>
-        <img id="portfolioButton" class="img-arrow" src="images/arrow-right.jpg" alt="javascript button">
       </div>
     </div>
 
