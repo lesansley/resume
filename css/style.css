@@ -207,7 +207,7 @@ a.workPlace {
 .framework-entry {
   padding-left: 20px;
   padding-right: 20px;
-} 
+}
 
 .imgResponsive {
   width: 100%;
@@ -421,7 +421,7 @@ ul {
   padding-left: 5%;
   padding-right: 5%;
   line-height: 150%;
-  visibility: hidden; 
+  visibility: hidden;
 }
 
 .col-headerName {
@@ -460,8 +460,6 @@ ul {
     display: block;
   }
 }
-
-
 
 @media only screen and (max-width: 510px) {
   col-headerName {
@@ -512,6 +510,10 @@ ul {
 
   .mobile-invisible {
     display: none;
+  }
+
+  .mobile-visible {
+    display: block;
   }
 
   .row,
