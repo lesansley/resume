@@ -1,7 +1,7 @@
 var bio = {
 	firstname: 'Les',
 	lastname: 'Ansley',
-	role : 'Research Scientist',
+	role : 'Web Developer',
 	contacts: {
 		email: ['les@ansleyfamily.com','mailto:les@ansleyfamily.com','images/email_30x30.png'],
 		mobile: ['+44 7999 418 119','tel:+447999418119','images/phone_30x30.png'],
@@ -16,7 +16,7 @@ var bio = {
 		'images/jumping.jpg',
 		'images/painting.jpg'
 	],
-	'welcomeMsg': 'After more than a decade building a successful academic career I am looking for new challenges that meld my enthusiasm for technology, data and design.',
+	'welcomeMsg': 'Dynamic web developer looking for new challenges that meld my enthusiasm for technology, data and design after more than a decade building a successful academic career. To this end I have extended my skills in web development by participating in courses through Udacity and building projects such as the Neighbourhood Map..',
 	'skills': ['leadership','problem solving','analytical thinking','data analysis','research', 'teaching', 'public speaking', 'responsive web design', 'javascript', 'jquery',  'bootstrap', 'knockout.js', 'html','css','vbscript','vba','excel','macros']
 };
 
@@ -54,14 +54,14 @@ var portfolio = {
 		{
 			title: 'Arcade Game',
 			dates: '2015',
-			description: 'An HTML5 Canvas powered video game, developed using the best practices in Object Oriented JavaScript.',
+			description: 'Coded an HTML5 Canvas powered video game using the best practices in Object Oriented JavaScript.',
 			image: 'images/arcade_game_300x300.jpg',
 			github: 'https://github.com/lesansley/arcade-game.git'
 		},
 		{
 			title: 'Portfolio',
 			dates: '2015',
-			description: 'A portfolio page developed using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.',
+			description: 'Built a portfolio page using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.',
 			image: 'images/portfolio_300x300.jpg',
 			github: 'https://github.com/lesansley/portfolio.git'
 
@@ -69,7 +69,7 @@ var portfolio = {
 		{
 			title: 'Neighbourhood Map',
 			dates: '2015',
-			description : 'An interactive, responsive map of a local neighborhood. The application	 was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
+			description : 'Created an interactive, responsive map of a local neighborhood. The application was built with HTML, CSS, JavaScript, JQuery, KnockoutJS, the Google Maps API,  Wikipedia API and the Flickr API',
 			image: 'images/neighbourhood_map_300x300.jpg',
 			github: 'https://github.com/lesansley/neighbourhood-map.git'
 
@@ -77,7 +77,7 @@ var portfolio = {
 		{
 			title: 'Resume',
 			dates: '2015',
-			description : 'An interactive resume application, developed using jQuery, that reads all data from a JSON file and then dynamically modifies the DOM to display the information.',
+			description : 'Developed an interactive resume application using jQuery that reads all data from a JSON file and then dynamically modifies the DOM to display the information.',
 			image: 'images/resume_300x300.jpg',
 			github: 'https://github.com/lesansley/resume.git'
 		}

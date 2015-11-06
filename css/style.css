@@ -194,6 +194,7 @@ a.workPlace {
   flex-wrap: wrap;
 }
 
+
 .flex-box {
   flex-direction: row;
   justify-content: space-around;
@@ -425,11 +426,14 @@ ul {
 }
 
 .col-headerName {
-  width: 470px;
+  width:  60%;
+  min-width: 470px;
+
 }
 
 .col-headerRole {
-  width: 100%px;
+  width: 40%;
+  text-align: right;
 }
 
 #footer {
@@ -534,6 +538,7 @@ ul {
 
   .col-headerRole {
     width: 100%;
+    text-align: left;
   }
 
   .portfolio-description {
