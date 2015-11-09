@@ -16,8 +16,8 @@ var bio = {
 		'images/jumping.jpg',
 		'images/painting.jpg'
 	],
-	'welcomeMsg': 'Dynamic web developer looking for new challenges that meld my enthusiasm for technology, data and design after more than a decade building a successful academic career. To this end I have extended my skills in web development by participating in courses through Udacity and building projects such as the Neighbourhood Map..',
-	'skills': ['leadership','problem solving','analytical thinking','data analysis','research', 'teaching', 'public speaking', 'responsive web design', 'javascript', 'jquery',  'bootstrap', 'knockout.js', 'html','css','vbscript','vba','excel','macros']
+	'welcomeMsg': 'Dynamic web developer looking for new challenges that meld my enthusiasm for technology, data and design after more than a decade building a successful academic career. To this end I have extended my skills in web development by participating in courses through Udacity and building projects such as the Neighbourhood Map.',
+	'skills': ['leadership','problem solving','analytical thinking','data analysis', 'teaching', 'public speaking','javascript','jquery','bootstrap','knockout.js','html','css','responsive web design','vbscript','research','vba','excel','macros']
 };
 
 var work = {
@@ -27,7 +27,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: 'Develop the department research strategy, lead research projects, mentor early career researchers, and attend (a lot of) meetings',
+			description: ['Coordinate the technology-enhanced learning strategy for the department.', 'Designed and built an automated, online undergraduate ethics submission and review system.', 'Sit on the scientific and medical advisory panel for UK Anti-Doping regarding policy and procedures for asthma-related drug use in sport.', 'Established the MSc Clinical Exercise Physiology programme.', 'Mentored 6 PhD students to completion.'],
 			url:'http://www.northumbria.ac.uk'
 		},
 		{
@@ -35,7 +35,7 @@ var work = {
 			role: 'Senior Lecturer',
 			dates: 'Sep 2003 to Aug 2007',
 			location: 'London, UK',
-			description: 'Lecturing and module development',
+			description: ['Responsible for the departmental website.', 'Developed modules and programmes','Membership of the University Research Ethics Committee'],
 			url:'http://www.kingston.ac.uk'
 		},
 		{
@@ -43,7 +43,7 @@ var work = {
 			role: 'Teacher',
 			dates: 'Sep 1998 to Aug 1999',
 			location: 'Zug, Switzerland',
-			description: 'Teaching science and physical education to 12 and 13 year-olds',
+			description: ['Taught science and physical education to 12 and 13 year-olds', 'Organised outdoor activities and extramural sport for the boarding school'],
 			url:'http://www.montana-zug.ch'
 		}
 	]
@@ -192,13 +192,21 @@ work.display = function() {
 		var formattedRole = HTMLworkRole.replace('%data%', work.jobs[job].role);
 		var formattedDates = HTMLworkDates.replace('%data%',work.jobs[job].dates);
 		var formattedLocation = HTMLworkLocation.replace('%data%',work.jobs[job].location);
-		var formattedDescription = HTMLworkDescription.replace('%data%',work.jobs[job].description);
 
 		$('.work-entry:last').append(formattedEmployer);
 		$('.work-entry:last').append(formattedRole);
 		$('.work-entry:last').append(formattedDates);
 		$('.work-entry:last').append(formattedLocation);
-		$('.work-entry:last').append(formattedDescription);
+		$('.work-entry:last').append(HTMLworkDescription);
+
+		var formattedDescriptionList ='';
+		for(var item in work.jobs[job].description) {
+			console.log(formattedDescriptionList);
+			console.log(item);
+			formattedDescriptionList += HTMLworkDescriptionItem.replace('%data%',work.jobs[job].description[item]);
+			//formattedDescriptionList += formattedDescriptionList;
+		}
+		$('.work-description-list:last').append(formattedDescriptionList);
 
 	}
 };

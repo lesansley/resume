@@ -319,13 +319,12 @@ a {
   margin-bottom: 20px;
 }
 
-
 #skills-list {
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 0px;
   flex-direction: row;
-  width: 80%;
+  width: 100%;
   padding-left: 10px;
   padding-right: 10px;
 }
@@ -349,6 +348,11 @@ a {
 
 ul {
   list-style-type: none;
+}
+
+ul.work-description-list {
+  list-style-type: circle;
+  list-style-position: outside;
 }
 
 .citation {

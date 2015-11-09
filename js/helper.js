@@ -19,7 +19,8 @@ var HTMLworkEmployer = '<div class="col-2 workPlace"><a class="workPlace"href="%
 var HTMLworkRole = '<div class="work-role col-10">%data%</div>';
 var HTMLworkDates = '<div class="date-text col-8">%data%</div>';
 var HTMLworkLocation = '<div class="location-text col-4">%data%</div>';
-var HTMLworkDescription = '<div class="work-description col-12">%data%</div>';
+var HTMLworkDescription = '<div class="work-description col-12"><ul class="work-description-list"></ul></div>';
+var HTMLworkDescriptionItem = '<li class="work-description-item">%data%</li>'
 
 var HTMLportfolioContainer ='<section id="portfolio-container"></section>'
 var HTMLportfolioStart = '<div class="portfolio-entry row"></div>';
