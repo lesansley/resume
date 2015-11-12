@@ -27,7 +27,7 @@ var work = {
 			role: 'Associate Professor',
 			dates: 'Sep 2007 to Present',
 			location: 'Newcastle, UK',
-			description: ['Coordinate the technology-enhanced learning strategy for the department.', 'Designed and built an automated, online undergraduate ethics submission and review system.', 'Sit on the scientific and medical advisory panel for UK Anti-Doping regarding policy and procedures for asthma-related drug use in sport.', 'Established the MSc Clinical Exercise Physiology programme.', 'Mentored 6 PhD students to completion.'],
+			description: ['Coordinate the technology-enhanced learning strategy for the department', 'Designed and built an automated, online undergraduate ethics submission and review system', 'Sit on the scientific and medical advisory panel for UK Anti-Doping regarding policy and procedures for asthma-related drug use in sport', 'Established the MSc Clinical Exercise Physiology programme', 'Mentored 6 PhD students to completion'],
 			url:'http://www.northumbria.ac.uk'
 		},
 		{
@@ -35,7 +35,7 @@ var work = {
 			role: 'Senior Lecturer',
 			dates: 'Sep 2003 to Aug 2007',
 			location: 'London, UK',
-			description: ['Responsible for the departmental website.', 'Developed modules and programmes','Membership of the University Research Ethics Committee'],
+			description: ['Responsible for the departmental website', 'Developed modules and programmes','Membership of the University Research Ethics Committee'],
 			url:'http://www.kingston.ac.uk'
 		},
 		{
@@ -201,10 +201,7 @@ work.display = function() {
 
 		var formattedDescriptionList ='';
 		for(var item in work.jobs[job].description) {
-			console.log(formattedDescriptionList);
-			console.log(item);
 			formattedDescriptionList += HTMLworkDescriptionItem.replace('%data%',work.jobs[job].description[item]);
-			//formattedDescriptionList += formattedDescriptionList;
 		}
 		$('.work-description-list:last').append(formattedDescriptionList);
 
